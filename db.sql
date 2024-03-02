@@ -1,4 +1,4 @@
-CREATE database presensi_shalat;
+CREATE DATABASE presensi_shalat;
 CREATE TABLE students (
     id SERIAL PRIMARY KEY,
     name VARCHAR NOT NULL,

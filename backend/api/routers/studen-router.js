@@ -3,7 +3,8 @@ import {
     newStudent,
     getAllStudents,
     getStudentById,
-    updateStudent
+    updateStudent,
+    deleteStudentById
 } from "../controllers/student.js";
 import {
     verifyToken
@@ -13,7 +14,8 @@ const router = express.Router();
 
 router.post("/api/v1/newStudent", verifyToken, newStudent);
 router.get("/api/v1/getAllStudents", verifyToken, getAllStudents);
-router.get("/api/v1/getStudentById", verifyToken, getStudentById);
-router.put("/api/v1/updateStudent", verifyToken, updateStudent);
+router.get("/api/v1/getStudentById/:id", verifyToken, getStudentById);
+router.put("/api/v1/updateStudent/:id", verifyToken, updateStudent);
+router.delete("/api/v1/deleteStudentById/:id", verifyToken, deleteStudentById);
 
 export default router;

@@ -2,6 +2,7 @@ import {
     pool
 } from "../../db.js";
 
+// post
 export const newStudent = async (req, res) => {
     try {
         const result = await pool.query(
@@ -19,6 +20,8 @@ export const newStudent = async (req, res) => {
     }
 };
 
+//get
+
 export const getAllStudents = async (_req, res) => {
     try {
         const result = await pool.query("SELECT * FROM students");
@@ -30,6 +33,7 @@ export const getAllStudents = async (_req, res) => {
     }
 };
 
+//get by id
 export const getStudentById = async (req, res) => {
     try {
         const result = await pool.query("SELECT * FROM students WHERE id = $1", [
@@ -43,6 +47,8 @@ export const getStudentById = async (req, res) => {
     }
 };
 
+
+//update
 export const updateStudent = async (req, res) => {
     try {
         await pool.query(
@@ -51,6 +57,27 @@ export const updateStudent = async (req, res) => {
         );
         res.status(200).json({
             message: "Mahasiswa berhasil ditambahkan.",
+        });
+    } catch (error) {
+        res.status(500).json({
+            msg: error.message
+        });
+    }
+};
+
+// Delete student by ID
+
+export const deleteStudentById = async (req, res) => {
+    try {
+        const {
+            id
+        } = req.params;
+        await pool.query(
+            "DELETE FROM students WHERE id = $1",
+            [id]
+        );
+        res.status(200).json({
+            message: "Mahasiswa berhasil dihapus.",
         });
     } catch (error) {
         res.status(500).json({
