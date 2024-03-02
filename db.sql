@@ -4,3 +4,8 @@ CREATE TABLE students (
     generation INT NOT NULL,
     present BOOLEAN DEFAULT FALSE NOT NULL
 );
+
+CREATE TABLE users (
+    username text,
+    password text
+  );
